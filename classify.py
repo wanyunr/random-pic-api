@@ -23,8 +23,16 @@ def convert_to_webp(image_path, output_folder, max_pixels=178956970):
     except Exception as e:
         print(f"Failed to convert {image_path}: {e}")
 
+# 创建输出文件夹（如果不存在）
+def create_output_folder(folder):
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+
 # 遍历文件夹中的图片
 def process_images(input_folder, output_folder_landscape, output_folder_portrait):
+    create_output_folder(output_folder_landscape)
+    create_output_folder(output_folder_portrait)
+    
     for filename in os.listdir(input_folder):
         if filename.endswith(('.jpg', '.jpeg', '.png')):
             image_path = os.path.join(input_folder, filename)
@@ -38,9 +46,9 @@ def process_images(input_folder, output_folder_landscape, output_folder_portrait
                 print(f"Error processing {image_path}: {e}. Skipping this image.")
 
 # 指定输入和输出文件夹
-input_folder = "/root/photos"
-output_folder_landscape = "/root/landscape"
-output_folder_portrait = "/root/portrait"
+input_folder = "./img_renamed"
+output_folder_landscape = "./landscape"
+output_folder_portrait = "./portrait"
 
 # 执行转换
 process_images(input_folder, output_folder_landscape, output_folder_portrait)
