@@ -48,7 +48,7 @@
 version: '3.9'
 services:
     random-api:
-        image: 'neixin/random-pic-api'
+        image: 'blueastar/random-pic-api'
         volumes:
 # 竖屏图片
             - './portrait:/var/www/html/portrait'
